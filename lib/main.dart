@@ -9,6 +9,17 @@ class FormApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final appTitle = 'RUSTICA LOGIN';
 
+    Row(
+      children: [
+        Expanded(
+          child: Image(
+            image: NetworkImage('https://dx23yqi1tewca.cloudfront.net/images/poiLogo/651f66e2-7bb6-4fce-bdec-15813023b337.png'),
+            height: 140,
+          ),
+        ),
+      ],
+    );
+
     return MaterialApp(
       title: appTitle,
       home: Scaffold(
@@ -66,6 +77,10 @@ class LoginScreenState extends State<LoginScreen> {
         ),
         validator: (value) => _validatorEmail(value));
   }
+
+
+
+
 
   Widget _passwordInput() {
     return TextFormField(
