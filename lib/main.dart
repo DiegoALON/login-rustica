@@ -5,36 +5,35 @@ void main() {
 }
 
 class FormApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    final appTitle = 'RUSTICA LOGIN';
 
-    Row(
-      children: [
-        Expanded(
-          child: Image(
-            image: NetworkImage('https://dx23yqi1tewca.cloudfront.net/images/poiLogo/651f66e2-7bb6-4fce-bdec-15813023b337.png'),
-            height: 140,
-          ),
-        ),
-      ],
-    );
-
+    //black background
     return MaterialApp(
-      title: appTitle,
+      //add image,
+
+
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.grey,
+      ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(appTitle),
-        ),
-        body: SafeArea(
-            child: Padding(
-          padding: const EdgeInsets.all(16.0),
+        backgroundColor: Colors.black,
+        body: Center(
+
+          child: Center(
           child: LoginScreen(),
         )),
       ),
     );
+
+
   }
 }
+//class image state class
+
+
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -53,16 +52,17 @@ class LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     // Crea un widget Form usando el _formKey que creamos anteriormente
-    return Form( //1 Form como raiz de nuestro formulario
+    return Form(
+      //1 Form como raiz de nuestro formulario
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          _emailInput(),//2
-          _passwordInput(),//2
+          _emailInput(), //2
+          _passwordInput(), //2
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: _loginButton()),//2
+              child: _loginButton()), //2
         ],
       ),
     );
@@ -71,27 +71,28 @@ class LoginScreenState extends State<LoginScreen> {
   Widget _emailInput() {
     return TextFormField(
         decoration: const InputDecoration(
-          icon: Icon(Icons.email),
+          icon: Icon(Icons.email, color: Colors.grey),
           hintText: 'Inserte su email',
           labelText: 'Email',
+          hintStyle: TextStyle(color: Color.fromARGB(255, 22, 22, 22)),
+          fillColor: Colors.white,
+          filled: false,
+          labelStyle: TextStyle(color: Colors.grey),
         ),
         validator: (value) => _validatorEmail(value));
   }
 
-
-
-
-
   Widget _passwordInput() {
     return TextFormField(
         decoration: const InputDecoration(
-          icon: Icon(Icons.lock),
+          icon: Icon(Icons.lock, color: Colors.grey),
           hintText: 'Inserte su contraseña',
           labelText: 'Contraseña',
         ),
         validator: (value) => _validatorPassword(value));
   }
-///"asdoasd"
+
+  ///"asdoasd"
   Widget _loginButton() {
     return ElevatedButton(
       onPressed: () {
@@ -119,7 +120,6 @@ class LoginScreenState extends State<LoginScreen> {
     }
   }
 
-
   bool _isEmail(String str) {
     return _emailRegExp.hasMatch(str.toLowerCase());
   }
@@ -127,7 +127,7 @@ class LoginScreenState extends State<LoginScreen> {
   static final RegExp _emailRegExp = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9\-\_]+(\.[a-zA-Z]+)*$");
 
-  bool _hasMinLenght(String value){
+  bool _hasMinLenght(String value) {
     return value.isNotEmpty && value.length >= 8;
   }
 }
