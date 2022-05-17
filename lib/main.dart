@@ -85,7 +85,7 @@ class LoginScreenState extends State<LoginScreen> {
         if (_formKey.currentState.validate()) {
           // Si el formulario es válido, queremos mostrar un Snackbar
           Scaffold.of(context)
-              .showSnackBar(SnackBar(content: Text('Login correcto')));
+              .showSnackBar(SnackBar(content: Text('HOLA DIEGasdasdasdO')));
         }
       },
       child: Text('Login'),
